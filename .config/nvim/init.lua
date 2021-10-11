@@ -61,7 +61,7 @@ vim.api.nvim_exec(
   [[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost *.cpp,*.js,*.lua FormatWrite
+  autocmd BufWritePost *.cpp,*.js,*.rs FormatWrite
 augroup END
 ]],
   true
