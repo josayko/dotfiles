@@ -1,12 +1,12 @@
 -- Include config files in ~/.config/nvim/lua/
+require("config")
 require("keybindings")
-
 require("packages")
 
-require("config")
-
+-- Lsp
 require("lspconfig").clangd.setup({})
 
+-- Formatter
 require("formatter").setup(
   {
     filetype = {
