@@ -11,8 +11,17 @@ vim.opt.ignorecase = true -- Ignore case
 vim.opt.incsearch = true -- Shows the match while typing
 vim.opt.hlsearch = true -- Highlight found searches
 
--- Leader key
-vim.g.mapleader = ","
+--Decrease update time
+vim.o.updatetime = 250
+vim.wo.signcolumn = 'yes'
+
+--Remap space as leader key
+vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 -- Color theme
-vim.g.colors_name = "onedark"
+vim.opt.termguicolors = true
+vim.g.onedark_terminal_italics = 2
+vim.cmd [[colorscheme onedark]]
+

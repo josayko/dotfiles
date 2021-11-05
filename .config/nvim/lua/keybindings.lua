@@ -14,3 +14,5 @@ keymap("n", "<c-l>", "<c-w>l", opts)
 
 -- Code formatter
 keymap("n", "<leader>f", ":Format<CR>", {noremap = true, silent = true})
+
+keymap("n", "<CR>", ":nohlsearch<CR>", {noremap = true, silent = true})
