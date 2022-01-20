@@ -1,5 +1,6 @@
 -- Include config files in ~/.config/nvim/lua/
-require("config")
-require("keybindings")
 require("packages")
-
+if (vim.loop.os_uname().sysname == "Linux") then
+  require("config")
+end
+require("keybindings")

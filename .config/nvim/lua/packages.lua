@@ -1,7 +1,13 @@
 -- Packer plugins manager
 -- Use `:PackerSync` to install/update
 -- Use `:PackerClean` to delete unused
-require("packer").startup(
+local fn = vim.fn
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+end
+
+return require("packer").startup(
   function()
     use "wbthomason/packer.nvim"
     use "neovim/nvim-lspconfig"
