@@ -15,12 +15,10 @@ vim.o.hlsearch = true -- Highlight found searches
 vim.o.updatetime = 250
 vim.wo.signcolumn = "yes"
 
-
 -- Color scheme
 vim.opt.termguicolors = true
 vim.g.onedark_terminal_italics = 2
 vim.cmd [[colorscheme onedark]]
-
 
 --Set statusbar
 vim.g.lightline = {
@@ -30,7 +28,7 @@ vim.g.lightline = {
 }
 
 -- Formatter
-function format_prettier()
+local function format_prettier()
   return {
     exe = "prettier",
     args = {"--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)), "--single-quote"},
@@ -42,6 +40,17 @@ require("formatter").setup(
   {
     logging = true,
     filetype = {
+      c = {
+        -- clang-format
+        function()
+          return {
+            exe = "clang-format",
+            args = {"-style=Webkit --assume-filename", vim.api.nvim_buf_get_name(0)},
+            stdin = true,
+            cwd = vim.fn.expand("%:p:h") -- Run clang-format in cwd of the file.
+          }
+        end
+      },
       cpp = {
         -- clang-format
         function()
@@ -61,6 +70,16 @@ require("formatter").setup(
           return {
             exe = "luafmt",
             args = {"--indent-count", 2, "--stdin"},
+            stdin = true
+          }
+        end
+      },
+      python = {
+        -- Configuration for psf/black
+        function()
+          return {
+            exe = "black", -- this should be available on your $PATH
+            args = {"-"},
             stdin = true
           }
         end
@@ -85,7 +104,7 @@ vim.api.nvim_exec(
   [[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost *.cpp,*.js,*ts,*.rs FormatWrite
+  autocmd BufWritePost *c,*.cpp,*.js,*ts,*.rs,*.py FormatWrite
 augroup END
 ]],
   true

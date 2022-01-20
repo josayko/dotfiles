@@ -14,7 +14,7 @@ return require("packer").startup(
     use "joshdick/onedark.vim" -- Theme inspired by Atom
     use "mhartington/formatter.nvim"
     use "neovim/nvim-lspconfig" -- Collection of configurations for built-in LSP client
-    use 'williamboman/nvim-lsp-installer'
+    use "williamboman/nvim-lsp-installer"
 
     use "ludovicchabant/vim-gutentags" -- Automatic tags management
     use "itchyny/lightline.vim" -- Fancier statusline
@@ -48,6 +48,10 @@ return require("packer").startup(
 
     -- IDE
     use "nvim-treesitter/nvim-treesitter"
+    use {
+      "nvim-telescope/telescope.nvim",
+      requires = {{"nvim-lua/plenary.nvim"}}
+    }
 
     if packer_bootstrap then
       require("packer").sync()

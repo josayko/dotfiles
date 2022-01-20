@@ -39,3 +39,10 @@ nkeymap('K', ':lua vim.lsp.buf.hover()<cr>')
 nkeymap('<c-k>', ':lua vim.lsp.buf.signature_help()<cr>')
 nkeymap('<leader>af', ':lua vim.lsp.buf.code_action()<cr>')
 nkeymap('<leader>rn', ':lua vim.lsp.buf.rename()<cr>')
+
+-- Using Lua functions
+keymap('n', '<leader>ff', ":lua require('telescope.builtin').find_files()<cr>", {noremap = true})
+
+keymap('n', '<leader>fg', ":lua require('telescope.builtin').live_grep()<cr>", {noremap = true})
+keymap('n', '<leader>fb', ":lua require('telescope.builtin').buffers()<cr>", {noremap = true})
+keymap('n', '<leader>fh', ":lua require('telescope.builtin').help_tags()<cr>", {noremap = true})
