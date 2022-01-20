@@ -62,6 +62,9 @@ return require("packer").startup(
       end
     }
 
+    -- Wakatime
+    use "wakatime/vim-wakatime"
+
     if packer_bootstrap then
       require("packer").sync()
     end
