@@ -13,6 +13,7 @@ require("packer").startup(
     use 'ludovicchabant/vim-gutentags' -- Automatic tags management
     use 'itchyny/lightline.vim' -- Fancier statusline
 
+    -- Autocompletion plugins
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
