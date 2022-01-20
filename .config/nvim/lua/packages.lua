@@ -42,7 +42,7 @@ return require("packer").startup(
           startify.button("v", "neovim config", ":e ~/.config/nvim/init.lua <cr>"),
           startify.button("q", "quit nvim", ":qa <cr>")
         }
-        vim.api.nvim_set_keymap("n", "<c-n>", ":Alpha <cr>", {noremap = true})
+        vim.api.nvim_set_keymap("n", "<leader>m", ":Alpha <cr>", {noremap = true})
       end
     }
 
@@ -51,6 +51,15 @@ return require("packer").startup(
     use {
       "nvim-telescope/telescope.nvim",
       requires = {{"nvim-lua/plenary.nvim"}}
+    }
+    use {
+      "kyazdani42/nvim-tree.lua",
+      requires = {
+        "kyazdani42/nvim-web-devicons" -- optional, for file icon
+      },
+      config = function()
+        require "nvim-tree".setup {}
+      end
     }
 
     if packer_bootstrap then

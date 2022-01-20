@@ -128,4 +128,3 @@ vim.o.foldmethod = "expr"
 local function blaho()
   print "hello world\n"
 end
-
