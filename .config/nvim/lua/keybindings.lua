@@ -1,5 +1,10 @@
--- Keybindings
 local keymap = vim.api.nvim_set_keymap
+
+--Remap space as leader key
+vim.api.nvim_set_keymap("", "<Space>", "<Nop>", {noremap = true, silent = true})
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 
 -- Ctrl+S to save
 keymap("n", "<c-s>", ":w<CR>", {})
@@ -17,3 +22,20 @@ keymap("n", "<leader>f", ":Format<CR>", {noremap = true, silent = true})
 
 -- Disable highlight search
 keymap("n", "<CR>", ":nohlsearch<CR>", {noremap = true, silent = true})
+
+-- Lsp
+local function nkeymap(key, map)
+  keymap('n', key, map, opts)
+end
+
+nkeymap('gd', ':lua vim.lsp.buf.definition()<cr>')
+nkeymap('gD', ':lua vim.lsp.buf.declaration()<cr>')
+nkeymap('gi', ':lua vim.lsp.buf.implementation()<cr>')
+nkeymap('gw', ':lua vim.lsp.buf.document_symbol()<cr>')
+nkeymap('gw', ':lua vim.lsp.buf.workspace_symbol()<cr>')
+nkeymap('gr', ':lua vim.lsp.buf.references()<cr>')
+nkeymap('gt', ':lua vim.lsp.buf.type_definition()<cr>')
+nkeymap('K', ':lua vim.lsp.buf.hover()<cr>')
+nkeymap('<c-k>', ':lua vim.lsp.buf.signature_help()<cr>')
+nkeymap('<leader>af', ':lua vim.lsp.buf.code_action()<cr>')
+nkeymap('<leader>rn', ':lua vim.lsp.buf.rename()<cr>')

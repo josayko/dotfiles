@@ -9,7 +9,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 return require("packer").startup(
-  function(use)
+  function()
     use "wbthomason/packer.nvim"
     use "joshdick/onedark.vim" -- Theme inspired by Atom
     use "mhartington/formatter.nvim"
