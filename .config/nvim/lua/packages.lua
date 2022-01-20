@@ -9,11 +9,12 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 return require("packer").startup(
-  function()
+  function(use)
     use "wbthomason/packer.nvim"
     use "joshdick/onedark.vim" -- Theme inspired by Atom
     use "mhartington/formatter.nvim"
     use "neovim/nvim-lspconfig" -- Collection of configurations for built-in LSP client
+    use 'williamboman/nvim-lsp-installer'
 
     use "ludovicchabant/vim-gutentags" -- Automatic tags management
     use "itchyny/lightline.vim" -- Fancier statusline
@@ -44,6 +45,9 @@ return require("packer").startup(
         vim.api.nvim_set_keymap("n", "<c-n>", ":Alpha <cr>", {noremap = true})
       end
     }
+
+    -- IDE
+    use "nvim-treesitter/nvim-treesitter"
 
     if packer_bootstrap then
       require("packer").sync()
