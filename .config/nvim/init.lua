@@ -20,11 +20,12 @@ configs.setup {
 require("nvim-autopairs").setup {}
 
 -- indent blankline
-require("indent_blankline").setup {
+--[[ require("indent_blankline").setup {
     space_char_blankline = " ",
     show_current_context = true,
     show_current_context_start = true,
 }
+--]]
 
 -- Setup Lspconfig
 local lsp_installer = require("nvim-lsp-installer")
