@@ -136,3 +136,28 @@ vim.o.foldmethod = "expr"
 local function blaho()
   print "hello world\n"
 end
+
+local function setup_diags()
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics,
+    {
+      virtual_text = false,
+      signs = true,
+      update_in_insert = false,
+      underline = true,
+    }
+  )
+end
+
+local function setup_qf()
+  local pubdiag = "textDocument/publishDiagnostics"
+  local def_pubdiag_handler = vim.lsp.handlers[pubdiag]
+  vim.lsp.handlers[pubdiag] = function(err, method, res, cid, bufnr, cfg)
+    def_pubdiag_handler(err, method, res, cid, bufnr, cfg)
+    vim.diagnostic.setqflist({ open = false })
+  end
+end
+
+setup_diags()
+setup_qf()
+

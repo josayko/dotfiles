@@ -47,7 +47,10 @@ return require("packer").startup(
     }
 
     -- IDE
-    use "nvim-treesitter/nvim-treesitter"
+    use {
+      "nvim-treesitter/nvim-treesitter",
+      run = ':TSUpdate'
+    }
     use {
       "nvim-telescope/telescope.nvim",
       requires = {{"nvim-lua/plenary.nvim"}}

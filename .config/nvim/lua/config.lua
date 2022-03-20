@@ -12,7 +12,7 @@ vim.o.incsearch = true -- Shows the match while typing
 vim.o.hlsearch = true -- Highlight found searches
 
 --Decrease update time
-vim.o.updatetime = 250
+vim.o.updatetime = 50
 vim.wo.signcolumn = "yes"
 
 -- Color scheme

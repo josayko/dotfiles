@@ -37,6 +37,7 @@ nkeymap("K", ":lua vim.lsp.buf.hover()<cr>")
 nkeymap("<c-k>", ":lua vim.lsp.buf.signature_help()<cr>")
 nkeymap("<leader>af", ":lua vim.lsp.buf.code_action()<cr>")
 nkeymap("<leader>rn", ":lua vim.lsp.buf.rename()<cr>")
+nkeymap("<Leader>e", ":lua vim.diagnostic.open_float(0)<cr>")
 
 -- Telescope
 nkeymap("<leader>ff", ":lua require('telescope.builtin').find_files()<cr>")
