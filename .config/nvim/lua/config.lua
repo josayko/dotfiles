@@ -10,6 +10,7 @@ vim.o.hidden = true -- Enable background buffers
 vim.o.ignorecase = true -- Ignore case
 vim.o.incsearch = true -- Shows the match while typing
 vim.o.hlsearch = true -- Highlight found searches
+vim.cmd [[set mouse=a]]
 
 --Decrease update time
 vim.o.updatetime = 50
@@ -105,6 +106,8 @@ vim.api.nvim_exec(
 augroup FormatAutogroup
   autocmd!
   autocmd BufWritePost *c,*.cpp,*.js,*ts,*.rs,*.py FormatWrite
+  autocmd FileType c setlocal shiftwidth=4 tabstop=4 noexpandtab
+  autocmd FileType cpp,go,python,rust setlocal shiftwidth=4 tabstop=4
 augroup END
 ]],
   true
