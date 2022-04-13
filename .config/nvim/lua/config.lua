@@ -10,6 +10,7 @@ vim.o.hidden = true -- Enable background buffers
 vim.o.ignorecase = true -- Ignore case
 vim.o.incsearch = true -- Shows the match while typing
 vim.o.hlsearch = true -- Highlight found searches
+vim.o.pumblend = 30 -- pseudo-transparency of popup-menu
 vim.cmd [[set mouse=a]]
 
 --Decrease update time
