@@ -11,13 +11,11 @@ end
 return require("packer").startup(
   function()
     use "wbthomason/packer.nvim"
-    use "joshdick/onedark.vim" -- Theme inspired by Atom
+    use "ful1e5/onedark.nvim"
     use "mhartington/formatter.nvim"
     use "neovim/nvim-lspconfig" -- Collection of configurations for built-in LSP client
     use "williamboman/nvim-lsp-installer"
-
     use "ludovicchabant/vim-gutentags" -- Automatic tags management
-    use "itchyny/lightline.vim" -- Fancier statusline
 
     -- Autocompletion plugins
     use "hrsh7th/cmp-nvim-lsp"
@@ -28,10 +26,7 @@ return require("packer").startup(
     use "L3MON4D3/LuaSnip"
     use "saadparwaiz1/cmp_luasnip"
 
-    -- Add indentation guides
-    use "lukas-reineke/indent-blankline.nvim"
-    use "/windwp/nvim-autopairs" -- Autopairs
-
+    -- Startup page
     use {
       "goolord/alpha-nvim",
       requires = {"kyazdani42/nvim-web-devicons"},
@@ -47,9 +42,11 @@ return require("packer").startup(
     }
 
     -- IDE
+    use "lukas-reineke/indent-blankline.nvim" -- Indentation lines
+    use "windwp/nvim-autopairs" -- Autopairs
     use {
       "nvim-treesitter/nvim-treesitter",
-      run = ':TSUpdate'
+      run = ":TSUpdate"
     }
     use {
       "nvim-telescope/telescope.nvim",
@@ -63,6 +60,10 @@ return require("packer").startup(
       config = function()
         require "nvim-tree".setup {}
       end
+    }
+    use {
+      "nvim-lualine/lualine.nvim",
+      requires = {"kyazdani42/nvim-web-devicons", opt = true}
     }
 
     if packer_bootstrap then

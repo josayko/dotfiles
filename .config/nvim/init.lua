@@ -16,18 +16,48 @@ configs.setup {
   }
 }
 
+-- Lualine statusbar
+require("lualine").setup {
+  options = {
+    icons_enabled = true,
+    theme = "onedark-nvim",
+    component_separators = {left = "", right = ""},
+    section_separators = {left = "", right = ""},
+    disabled_filetypes = {},
+    always_divide_middle = true,
+    globalstatus = false
+  },
+  sections = {
+    lualine_a = {"mode"},
+    lualine_b = {"branch", "diff", "diagnostics"},
+    lualine_c = {"filename"},
+    lualine_x = {"encoding", "fileformat", "filetype"},
+    lualine_y = {"progress"},
+    lualine_z = {"location"}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {"filename"},
+    lualine_x = {"location"},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  extensions = {}
+}
+
+-- indent blankline
+require("indent_blankline").setup {
+    space_char_blankline = " ",
+    show_current_context = false,
+    show_current_context_start = false,
+}
+
 -- Autopairs
 require("nvim-autopairs").setup {}
 
--- indent blankline
---[[ require("indent_blankline").setup {
-    space_char_blankline = " ",
-    show_current_context = true,
-    show_current_context_start = true,
-}
---]]
-
--- Setup Lspconfig
+---------------------------------- Lspconfig ----------------------------------
 local lsp_installer = require("nvim-lsp-installer")
 lsp_installer.on_server_ready(
   function(server)
@@ -47,7 +77,7 @@ lsp_installer.on_server_ready(
   end
 )
 
--- Setup nvim-cmp.
+------------------------ Autocompletion: nvim-cmp -----------------------------
 local cmp = require("cmp")
 
 local luasnip = require("luasnip")
@@ -99,6 +129,7 @@ cmp.setup(
     )
   }
 )
+-------------------------------------------------------------------------------
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(
@@ -132,19 +163,16 @@ vim.o.completeopt = "menuone,noselect"
 vim.o.foldmethod = "expr"
 -- vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 
--- This is a cool function
-local function blaho()
-  print "hello world\n"
-end
-
+-------------------- Diagnostic messages --------------------------------------
 local function setup_diags()
-  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.handlers["textDocument/publishDiagnostics"] =
+    vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics,
     {
       virtual_text = false,
       signs = true,
       update_in_insert = false,
-      underline = true,
+      underline = true
     }
   )
 end
@@ -154,10 +182,10 @@ local function setup_qf()
   local def_pubdiag_handler = vim.lsp.handlers[pubdiag]
   vim.lsp.handlers[pubdiag] = function(err, method, res, cid, bufnr, cfg)
     def_pubdiag_handler(err, method, res, cid, bufnr, cfg)
-    vim.diagnostic.setqflist({ open = false })
+    vim.diagnostic.setqflist({open = false})
   end
 end
 
 setup_diags()
 setup_qf()
-
+-------------------------------------------------------------------------------

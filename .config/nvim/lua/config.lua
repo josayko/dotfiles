@@ -13,23 +13,15 @@ vim.o.hlsearch = true -- Highlight found searches
 vim.o.pumblend = 30 -- pseudo-transparency of popup-menu
 vim.cmd [[set mouse=a]]
 
---Decrease update time
+-- Decrease update time
 vim.o.updatetime = 50
 vim.wo.signcolumn = "yes"
 
 -- Color scheme
 vim.opt.termguicolors = true
-vim.g.onedark_terminal_italics = 2
-vim.cmd [[colorscheme onedark]]
+require("onedark").setup()
 
---Set statusbar
-vim.g.lightline = {
-  colorscheme = "onedark",
-  active = {left = {{"mode", "paste"}, {"gitbranch", "readonly", "filename", "modified"}}},
-  component_function = {gitbranch = "fugitive#head"}
-}
-
--- Formatter
+--------------------------------- Formatter -----------------------------------
 local function format_prettier()
   return {
     exe = "prettier",
@@ -99,14 +91,14 @@ require("formatter").setup(
     }
   }
 )
+-------------------------------------------------------------------------------
 
 -- Autocmd
--- Format on save
 vim.api.nvim_exec(
   [[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost *c,*.cpp,*.js,*ts,*.rs,*.py FormatWrite
+  autocmd BufWritePost *c,*.cpp,*.js,*ts,*.rs,*.py,*.lua FormatWrite
   autocmd FileType c setlocal shiftwidth=4 tabstop=4 noexpandtab
   autocmd FileType cpp,go,python,rust setlocal shiftwidth=4 tabstop=4
 augroup END
