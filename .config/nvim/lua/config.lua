@@ -19,7 +19,10 @@ vim.wo.signcolumn = "yes"
 
 -- Color scheme
 vim.opt.termguicolors = true
-require("onedark").setup()
+require("onedark").setup {
+  transparent = true,
+  transparent_sidebar = true
+}
 
 --------------------------------- Formatter -----------------------------------
 local function format_prettier()
