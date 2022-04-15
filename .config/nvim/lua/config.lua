@@ -1,6 +1,6 @@
 -- General
 vim.o.number = true
-vim.o.relativenumber = true
+vim.o.relativenumber = false
 vim.o.expandtab = true
 vim.o.shiftwidth = 2
 vim.o.softtabstop = 2
@@ -10,7 +10,7 @@ vim.o.hidden = true -- Enable background buffers
 vim.o.ignorecase = true -- Ignore case
 vim.o.incsearch = true -- Shows the match while typing
 vim.o.hlsearch = true -- Highlight found searches
-vim.o.pumblend = 30 -- pseudo-transparency of popup-menu
+vim.o.pumblend = 15 -- pseudo-transparency of popup-menu
 vim.cmd [[set mouse=a]]
 
 -- Decrease update time
@@ -20,8 +20,8 @@ vim.wo.signcolumn = "yes"
 -- Color scheme
 vim.opt.termguicolors = true
 require("onedark").setup {
-  transparent = true,
-  transparent_sidebar = true
+  transparent = false,
+  transparent_sidebar = false
 }
 
 --------------------------------- Formatter -----------------------------------
