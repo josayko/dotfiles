@@ -101,7 +101,6 @@ vim.api.nvim_exec(
   [[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost *c,*.cpp,*.js,*ts,*.rs,*.py,*.lua FormatWrite
   autocmd FileType c setlocal shiftwidth=4 tabstop=4 noexpandtab
   autocmd FileType cpp,go,python,rust setlocal shiftwidth=4 tabstop=4
 augroup END
