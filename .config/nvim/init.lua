@@ -57,6 +57,10 @@ require("indent_blankline").setup {
 -- Autopairs
 require("nvim-autopairs").setup {}
 
+vim.api.nvim_set_keymap('n', '<c-P>',
+    "<cmd>lua require('fzf-lua').files()<CR>",
+    { noremap = true, silent = true })
+
 ---------------------------------- Lspconfig ----------------------------------
 local lsp_installer = require("nvim-lsp-installer")
 lsp_installer.on_server_ready(

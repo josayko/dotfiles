@@ -4,7 +4,7 @@
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap =
+  Packer_bootstrap =
     fn.system({"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path})
 end
 
@@ -51,6 +51,11 @@ return require("packer").startup(
     use {
       "nvim-telescope/telescope.nvim",
       requires = {{"nvim-lua/plenary.nvim"}}
+    }
+    use { 'junegunn/fzf', run = './install --bin', }
+    use {
+      "ibhagwan/fzf-lua",
+      requires = {"kyazdani42/nvim-web-devicons"}
     }
     use {
       "kyazdani42/nvim-tree.lua",
