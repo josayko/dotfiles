@@ -61,6 +61,8 @@ require("formatter").setup(
       },
       javascript = {format_prettier},
       typescript = {format_prettier},
+      html = {format_prettier},
+      css = {format_prettier},
       lua = {
         -- luafmt
         function()
