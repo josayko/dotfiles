@@ -52,7 +52,7 @@ return require("packer").startup(
       "nvim-telescope/telescope.nvim",
       requires = {{"nvim-lua/plenary.nvim"}}
     }
-    use { 'junegunn/fzf', run = './install --bin', }
+    use {"junegunn/fzf", run = "./install --bin"}
     use {
       "ibhagwan/fzf-lua",
       requires = {"kyazdani42/nvim-web-devicons"}
@@ -70,6 +70,7 @@ return require("packer").startup(
       "nvim-lualine/lualine.nvim",
       requires = {"kyazdani42/nvim-web-devicons", opt = true}
     }
+    use "norcalli/nvim-colorizer.lua"
 
     if packer_bootstrap then
       require("packer").sync()

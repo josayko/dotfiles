@@ -18,7 +18,7 @@ vim.o.updatetime = 50
 vim.wo.signcolumn = "yes"
 
 -- Color scheme
-vim.opt.termguicolors = true
+vim.o.termguicolors = true
 require("onedark").setup {
   transparent = false,
   transparent_sidebar = false

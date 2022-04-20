@@ -57,16 +57,32 @@ require("indent_blankline").setup {
 -- Autopairs
 require("nvim-autopairs").setup {}
 
-vim.api.nvim_set_keymap('n', '<c-P>',
-    "<cmd>lua require('fzf-lua').files()<CR>",
-    { noremap = true, silent = true })
+-- Fzf
+vim.api.nvim_set_keymap("n", "<c-P>", "<cmd>lua require('fzf-lua').files()<CR>", {noremap = true, silent = true})
+
+-- Colorizer
+require("colorizer").setup(
+  {"*"},
+  {
+    RGB = true, -- #RGB hex codes
+    RRGGBB = true, -- #RRGGBB hex codes
+    names = true, -- "Name" codes like Blue
+    RRGGBBAA = false, -- #RRGGBBAA hex codes
+    rgb_fn = false, -- CSS rgb() and rgba() functions
+    hsl_fn = true, -- CSS hsl() and hsla() functions
+    css = false, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+    css_fn = false -- Enable all CSS *functions*: rgb_fn, hsl_fn
+  }
+)
 
 ---------------------------------- Lspconfig ----------------------------------
 local lsp_installer = require("nvim-lsp-installer")
 lsp_installer.on_server_ready(
   function(server)
     local opts = {
-      root_dir = function() return vim.loop.cwd() end
+      root_dir = function()
+        return vim.loop.cwd()
+      end
     }
     if server.name == "sumneko_lua" then
       opts = {
@@ -83,16 +99,18 @@ lsp_installer.on_server_ready(
   end
 )
 
-local lspconfig = require'lspconfig'
-local configs = require'lspconfig/configs'    
+local lspconfig = require "lspconfig"
+local configs = require "lspconfig/configs"
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-lspconfig.emmet_ls.setup({
+lspconfig.emmet_ls.setup(
+  {
     -- on_attach = on_attach,
     capabilities = capabilities,
-    filetypes = { "html", "css", "typescriptreact", "javascriptreact" },
-})
+    filetypes = {"html", "css", "typescriptreact", "javascriptreact"}
+  }
+)
 
 ------------------------ Autocompletion: nvim-cmp -----------------------------
 local cmp = require("cmp")
