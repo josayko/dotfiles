@@ -12,6 +12,7 @@ vim.o.incsearch = true -- Shows the match while typing
 vim.o.hlsearch = true -- Highlight found searches
 vim.o.pumblend = 15 -- pseudo-transparency of popup-menu
 vim.cmd [[set mouse=a]]
+vim.api.nvim_command("set clipboard+=unnamedplus")
 
 -- Decrease update time
 vim.o.updatetime = 50

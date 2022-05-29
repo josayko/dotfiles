@@ -25,6 +25,7 @@ return require("packer").startup(
     use "hrsh7th/nvim-cmp"
     use "L3MON4D3/LuaSnip"
     use "saadparwaiz1/cmp_luasnip"
+    use "ntpeters/vim-better-whitespace"
 
     -- Startup page
     use {
@@ -43,6 +44,7 @@ return require("packer").startup(
 
     -- IDE
     use "lukas-reineke/indent-blankline.nvim" -- Indentation lines
+    use "Pocco81/AutoSave.nvim"
     use "windwp/nvim-autopairs" -- Autopairs
     use {
       "nvim-treesitter/nvim-treesitter",
