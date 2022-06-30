@@ -10,7 +10,7 @@ configs.setup {
   highlight = {
     -- enable highlighting
     enable = true,
-    disable = {"html"}
+    disable = {}
   },
   indent = {
     enable = true -- default is disabled anyways
