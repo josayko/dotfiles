@@ -44,7 +44,6 @@ return require("packer").startup(
 
     -- IDE
     use "lukas-reineke/indent-blankline.nvim" -- Indentation lines
-    use "Pocco81/AutoSave.nvim"
     use "windwp/nvim-autopairs" -- Autopairs
     use {
       "nvim-treesitter/nvim-treesitter",
