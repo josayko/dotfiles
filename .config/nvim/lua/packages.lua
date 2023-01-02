@@ -72,6 +72,15 @@ return require("packer").startup(
       requires = {"kyazdani42/nvim-web-devicons", opt = true}
     }
     use "norcalli/nvim-colorizer.lua"
+    use(
+      {
+        "kylechui/nvim-surround",
+        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+        config = function()
+          require("nvim-surround").setup({})
+        end
+      }
+    )
 
     if packer_bootstrap then
       require("packer").sync()

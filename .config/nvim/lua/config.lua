@@ -107,7 +107,7 @@ augroup FormatAutogroup
   autocmd!
   autocmd FileType c setlocal shiftwidth=4 tabstop=4 noexpandtab
   autocmd FileType cpp,go,python,rust setlocal shiftwidth=4 tabstop=4
-  autocmd FileType js setlocal shiftwidth=2 tabstop=2
+  autocmd FileType js,ts,ruby setlocal shiftwidth=2 tabstop=2
 augroup END
 ]],
   true
