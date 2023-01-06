@@ -20,7 +20,7 @@ nkeymap("<c-k>", "<c-w>k")
 nkeymap("<c-l>", "<c-w>l")
 
 -- Code formatter
-keymap("n", "<leader>f", ":Format<CR>", {noremap = true, silent = true})
+keymap("n", "<leader>f", ":lua vim.lsp.buf.format()<cr>", {noremap = true, silent = true})
 
 -- Disable highlight search
 keymap("n", "<CR>", ":nohlsearch<CR>", {noremap = true, silent = true})
