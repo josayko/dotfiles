@@ -1,28 +1,28 @@
 -- General
 
-vim.o.number = true
-vim.o.relativenumber = false
-vim.o.expandtab = true
-vim.o.shiftwidth = 2
-vim.o.softtabstop = 2
-vim.o.cursorline = true
-vim.o.linebreak = true -- Stop words being broken on wrap
-vim.o.hidden = true -- Enable background buffers
-vim.o.ignorecase = true -- Ignore case
-vim.o.incsearch = true -- Shows the match while typing
-vim.o.hlsearch = true -- Highlight found searches
-vim.o.pumblend = 15 -- pseudo-transparency of popup-menu
-vim.o.swapfile = false
+vim.opt.number = true
+vim.opt.relativenumber = false
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
+vim.opt.cursorline = true
+vim.opt.linebreak = true -- Stop words being broken on wrap
+vim.opt.hidden = true -- Enable background buffers
+vim.opt.ignorecase = true -- Ignore case
+vim.opt.incsearch = true -- Shows the match while typing
+vim.opt.hlsearch = true -- Highlight found searches
+vim.opt.pumblend = 15 -- pseudo-transparency of popup-menu
+vim.opt.swapfile = false
 vim.cmd([[set mouse=a]])
 vim.api.nvim_command("set clipboard+=unnamedplus")
 
 -- Decrease update time
-vim.o.updatetime = 50
-vim.wo.signcolumn = "yes"
+vim.opt.updatetime = 50
+vim.opt.signcolumn = "yes"
 
 -- Color scheme
-vim.o.termguicolors = true
-local colorscheme = require("onedark")
+vim.opt.termguicolors = true
+local colorscheme = require("onenord")
 
 colorscheme.setup({
   transparent = false,
@@ -45,18 +45,24 @@ null_ls.setup({
 
     null_ls.builtins.completion.luasnip,
     null_ls.builtins.completion.spell,
-    null_ls.builtins.completion.tags
+    null_ls.builtins.completion.tags,
   },
 })
 
 -------------------- Diagnostic messages --------------------------------------
 
-vim.diagnostic.config({ virtual_text = false })
+vim.diagnostic.config({ virtual_text = true })
+
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
 
 local function setup_diags()
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
     virtual_text = false,
-    signs = false,
+    signs = true,
     update_in_insert = false,
     underline = true,
   })
@@ -88,7 +94,8 @@ require("null-ls").setup({
         buffer = bufnr,
         callback = function()
           -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-          vim.lsp.buf.formatting_sync()
+          vim.lsp.buf.format({ bufnr = bufnr })
+          -- vim.lsp.buf.formatting_sync()
         end,
       })
     end
@@ -101,7 +108,7 @@ augroup AutoFormatGroup
   autocmd!
   autocmd FileType c setlocal shiftwidth=4 tabstop=4 noexpandtab
   autocmd FileType cpp,go,python,rust setlocal shiftwidth=4 tabstop=4
-  autocmd FileType js,ts,ruby setlocal shiftwidth=2 tabstop=2
+  autocmd FileType js,ts,ruby,elixir setlocal shiftwidth=2 tabstop=2
 augroup END
 ]] ,
   true

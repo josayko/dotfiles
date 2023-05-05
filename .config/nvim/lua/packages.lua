@@ -10,7 +10,7 @@ end
 
 require("packer").startup(function(use)
   use("wbthomason/packer.nvim")
-  use("ful1e5/onedark.nvim")
+  use 'rmehri01/onenord.nvim'
   use({
     "jose-elias-alvarez/null-ls.nvim",
     config = function()
@@ -87,10 +87,12 @@ require("packer").startup(function(use)
       require("nvim-surround").setup({})
     end,
   })
+  use({
+    "lewis6991/gitsigns.nvim",
+    -- tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
+  })
 
   if packer_bootstrap then
     require("packer").sync()
   end
 end)
-
-

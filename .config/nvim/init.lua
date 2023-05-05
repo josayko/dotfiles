@@ -17,13 +17,13 @@ configs.setup({
   },
 })
 
-vim.o.listchars = "eol:↵,trail:~,tab:>-,nbsp:␣"
+vim.opt.listchars = "eol:↵,trail:~,tab:>-,nbsp:␣"
 
 -- Lualine statusbar
 require("lualine").setup({
   options = {
     icons_enabled = true,
-    theme = "onedark-nvim",
+    theme = "onedark",
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
     disabled_filetypes = {},
@@ -32,7 +32,11 @@ require("lualine").setup({
   },
   sections = {
     lualine_a = { "mode" },
-    lualine_b = { "branch", "diff", "diagnostics" },
+    lualine_b = {
+      "branch",
+      "diff",
+      { "diagnostics", symbols = { error = " ", warn = " ", info = " ", hint = " " } },
+    },
     lualine_c = { "filename" },
     lualine_x = { "encoding", "fileformat", "filetype" },
     lualine_y = { "progress" },
@@ -75,6 +79,8 @@ require("colorizer").setup({ "*" }, {
   css_fn = false, -- Enable all CSS *functions*: rgb_fn, hsl_fn
 })
 
+require("gitsigns").setup()
+
 ---------------------------------- Lspconfig ----------------------------------
 require("mason").setup()
 require("mason-lspconfig").setup()
@@ -98,6 +104,19 @@ lspconfig.emmet_ls.setup({
   -- on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { "html", "css", "typescriptreact", "javascriptreact" },
+})
+
+local path_to_elixirls =
+vim.fn.expand("~/.vscode/extensions/jakebecker.elixir-ls-0.14.5/elixir-ls-release/language_server.sh")
+lspconfig.elixirls.setup({
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  elixirLS = {
+    dialyzerEnabled = false,
+    fetchDeps = false,
+  },
 })
 
 ------------------------ Autocompletion: nvim-cmp -----------------------------
@@ -167,10 +186,10 @@ cmp.setup.cmdline(":", {
 })
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = "menuone,noselect"
+vim.opt.completeopt = "menuone,noselect"
 
 -- Treesitter - Folding lines
-vim.o.foldmethod = "expr"
+vim.opt.foldmethod = "expr"
 -- vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 
 -------------------------------------------------------------------------------
