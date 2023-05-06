@@ -6,8 +6,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Ctrl+S to save
-keymap("n", "<c-s>", ":w<CR>", {})
-keymap("i", "<c-s>", "<Esc>:w<CR>a", {})
+keymap("n", "<c-s>", ":w<cr>", {})
+keymap("i", "<c-s>", "<Esc>:w<cr>a", {})
 
 -- Panes navigaton
 local opts = {noremap = true}
@@ -23,7 +23,7 @@ nkeymap("<c-l>", "<c-w>l")
 keymap("n", "<leader>f", ":lua vim.lsp.buf.format()<cr>", {noremap = true, silent = true})
 
 -- Disable highlight search
-keymap("n", "<CR>", ":nohlsearch<CR>", {noremap = true, silent = true})
+keymap("n", "<cr>", ":nohlsearch<cr>", {noremap = true, silent = true})
 
 -- Lsp
 nkeymap("gd", ":lua vim.lsp.buf.definition()<cr>")
@@ -37,7 +37,7 @@ nkeymap("K", ":lua vim.lsp.buf.hover()<cr>")
 nkeymap("<c-k>", ":lua vim.lsp.buf.signature_help()<cr>")
 nkeymap("<leader>af", ":lua vim.lsp.buf.code_action()<cr>")
 nkeymap("<leader>rn", ":lua vim.lsp.buf.rename()<cr>")
-nkeymap("<Leader>e", ":lua vim.diagnostic.open_float(0)<cr>")
+nkeymap("<leader>e", ":lua vim.diagnostic.open_float(0)<cr>")
 
 -- Telescope
 nkeymap("<leader>ff", ":lua require('telescope.builtin').find_files()<cr>")

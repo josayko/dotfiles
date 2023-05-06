@@ -4,8 +4,7 @@ require("config")
 require("keybindings")
 
 -- IDE-like Neovim config
-local configs = require("nvim-treesitter.configs")
-configs.setup({
+require("nvim-treesitter.configs").setup({
   ensure_installed = "all", -- Only use parsers that are maintained
   highlight = {
     -- enable highlighting
@@ -14,6 +13,35 @@ configs.setup({
   },
   indent = {
     enable = true, -- default is disabled anyways
+  },
+})
+
+require("telescope").setup({
+  pickers = {
+    buffers = {
+      show_all_buffers = true,
+      sort_lastused = true,
+      theme = "dropdown",
+      previewer = false,
+      mappings = {
+        i = {
+          ["<c-d>"] = "delete_buffer",
+        },
+      },
+    },
+    find_files = {
+      sort_lastused = true,
+      theme = "dropdown",
+      previewer = false,
+    },
+    live_grep = {
+      sort_lastused = true,
+      theme = "dropdown",
+    },
+    help_tags = {
+      sort_lastused = true,
+      theme = "dropdown",
+    },
   },
 })
 
@@ -64,9 +92,6 @@ require("indent_blankline").setup({
 -- Autopairs
 require("nvim-autopairs").setup({})
 
--- Fzf
-vim.api.nvim_set_keymap("n", "<c-P>", "<cmd>lua require('fzf-lua').files()<CR>", { noremap = true, silent = true })
-
 -- Colorizer
 require("colorizer").setup({ "*" }, {
   RGB = true, -- #RGB hex codes
@@ -80,16 +105,16 @@ require("colorizer").setup({ "*" }, {
 })
 
 require("gitsigns").setup()
+require("Comment").setup()
 
 ---------------------------------- Lspconfig ----------------------------------
 require("mason").setup()
 require("mason-lspconfig").setup()
-local lspconfig = require("lspconfig")
-local configs = require("lspconfig/configs")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+local lspconfig = require("lspconfig")
 lspconfig.ruby_ls.setup({})
 lspconfig.lua_ls.setup({
   settings = {
@@ -106,8 +131,6 @@ lspconfig.emmet_ls.setup({
   filetypes = { "html", "css", "typescriptreact", "javascriptreact" },
 })
 
-local path_to_elixirls =
-vim.fn.expand("~/.vscode/extensions/jakebecker.elixir-ls-0.14.5/elixir-ls-release/language_server.sh")
 lspconfig.elixirls.setup({
   capabilities = capabilities,
   flags = {
@@ -127,7 +150,7 @@ local luasnip = require("luasnip")
 cmp.setup({
   snippet = {
     expand = function(args)
-      require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+      require("luasnip").lsp_expand(args.body)
     end,
   },
   mapping = {
@@ -190,6 +213,6 @@ vim.opt.completeopt = "menuone,noselect"
 
 -- Treesitter - Folding lines
 vim.opt.foldmethod = "expr"
--- vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 -------------------------------------------------------------------------------

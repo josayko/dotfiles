@@ -10,7 +10,7 @@ end
 
 require("packer").startup(function(use)
   use("wbthomason/packer.nvim")
-  use 'rmehri01/onenord.nvim'
+  use("rmehri01/onenord.nvim")
   use({
     "jose-elias-alvarez/null-ls.nvim",
     config = function()
@@ -61,11 +61,6 @@ require("packer").startup(function(use)
     "nvim-telescope/telescope.nvim",
     requires = { { "nvim-lua/plenary.nvim" } },
   })
-  use({ "junegunn/fzf", run = "./install --bin" })
-  use({
-    "ibhagwan/fzf-lua",
-    requires = { "kyazdani42/nvim-web-devicons" },
-  })
   use({
     "kyazdani42/nvim-tree.lua",
     requires = {
@@ -90,6 +85,12 @@ require("packer").startup(function(use)
   use({
     "lewis6991/gitsigns.nvim",
     -- tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
+  })
+  use({
+    "numToStr/Comment.nvim",
+    config = function()
+      require("Comment").setup()
+    end,
   })
 
   if packer_bootstrap then
