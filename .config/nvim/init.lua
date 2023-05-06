@@ -51,7 +51,7 @@ vim.opt.listchars = "eol:↵,trail:~,tab:>-,nbsp:␣"
 require("lualine").setup({
   options = {
     icons_enabled = true,
-    theme = "onedark",
+    theme = "onenord",
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
     disabled_filetypes = {},

@@ -24,6 +24,12 @@ require("packer").startup(function(use)
     "neovim/nvim-lspconfig",
   })
   use("ludovicchabant/vim-gutentags") -- Automatic tags management
+  use({
+    "Pocco81/auto-save.nvim",
+    config = function()
+      require("auto-save").setup({})
+    end,
+  })
 
   -- Autocompletion plugins
   use("hrsh7th/cmp-nvim-lsp")
@@ -85,6 +91,10 @@ require("packer").startup(function(use)
   use({
     "lewis6991/gitsigns.nvim",
     -- tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
+  })
+  use({
+    "folke/trouble.nvim",
+    requires = "nvim-tree/nvim-web-devicons",
   })
   use({
     "numToStr/Comment.nvim",
