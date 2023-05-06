@@ -63,7 +63,7 @@ require("lualine").setup({
     lualine_b = {
       "branch",
       "diff",
-      { "diagnostics", symbols = { error = " ", warn = " ", info = " ", hint = " " } },
+      { "diagnostics", symbols = { error = " ", warn = " ", info = " ", hint = " " } },
     },
     lualine_c = { "filename" },
     lualine_x = { "encoding", "fileformat", "filetype" },
@@ -106,6 +106,16 @@ require("colorizer").setup({ "*" }, {
 
 require("gitsigns").setup()
 require("Comment").setup()
+require("trouble").setup({
+  -- signs = {
+  --   error = "",
+  --   warning = "",
+  --   hint = "",
+  --   information = "",
+  --   other = ""
+  -- }
+  use_diagnostic_signs = true,
+})
 
 ---------------------------------- Lspconfig ----------------------------------
 require("mason").setup()
