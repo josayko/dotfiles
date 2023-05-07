@@ -154,6 +154,16 @@ lspconfig.elixirls.setup({
 
 ------------------------ Autocompletion: nvim-cmp -----------------------------
 local cmp = require("cmp")
+local types = require("cmp.types")
+
+local function deprioritize_snippet(entry1, entry2)
+  if entry1:get_kind() == types.lsp.CompletionItemKind.Snippet then
+    return false
+  end
+  if entry2:get_kind() == types.lsp.CompletionItemKind.Snippet then
+    return true
+  end
+end
 
 local luasnip = require("luasnip")
 
@@ -162,6 +172,14 @@ cmp.setup({
     expand = function(args)
       require("luasnip").lsp_expand(args.body)
     end,
+  },
+  sorting = {
+    priority_weight = 2,
+    comparators = {
+      cmp.config.compare.kind,
+      cmp.config.compare.scope,
+      cmp.config.compare.recently_used,
+    },
   },
   mapping = {
     ["<C-p>"] = cmp.mapping.select_prev_item(),
