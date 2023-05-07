@@ -46,6 +46,11 @@ null_ls.setup({
 
 -------------------- Diagnostic messages --------------------------------------
 
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers["signature_help"], {
+  border = "single",
+  close_events = { "CursorMoved", "BufHidden", "InsertCharPre" },
+})
+
 vim.diagnostic.config({ virtual_text = true })
 
 local signs = { Error = "", Warn = "", Hint = "", Info = "" }
@@ -74,4 +79,3 @@ end
 
 setup_diags()
 setup_qf()
-
