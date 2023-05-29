@@ -75,7 +75,9 @@ require("packer").startup(function(use)
       "kyazdani42/nvim-web-devicons", -- optional, for file icon
     },
     config = function()
-      require("nvim-tree").setup({})
+      require("nvim-tree").setup({
+        sync_root_with_cwd = true
+      })
     end,
   })
   use({
