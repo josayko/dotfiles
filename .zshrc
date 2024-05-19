@@ -1,3 +1,11 @@
+# Environment
+export EDITOR=nvim
+export PATH="$HOME/.tmux/plugins/tmuxifier/bin:$PATH"
+export KERL_BUILD_DOCS=yes
+# export CPPFLAGS="${CPPFLAGS+"$CPPFLAGS "}-I/opt/homebrew/opt/unixodbc/include"
+# export LDFLAGS="${LDFLAGS+"$LDFLAGS "}-L/opt/homebrew/opt/unixodbc/lib"
+# export KERL_CONFIGURE_OPTIONS="--with-odbc=/opt/homebrew/opt/unixodbc"
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -79,21 +87,13 @@ alias lg='lazygit'
 alias tls="tmux list-session"
 alias ta="tmux a"
 
-# Shell integrations
-eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
-eval "$(tmuxifier init -)"
-
-# Environment
-export EDITOR=nvim
-export PATH="$HOME/.tmux/plugins/tmuxifier/bin:$PATH"
-export KERL_BUILD_DOCS=yes
-# export CPPFLAGS="${CPPFLAGS+"$CPPFLAGS "}-I/opt/homebrew/opt/unixodbc/include"
-# export LDFLAGS="${LDFLAGS+"$LDFLAGS "}-L/opt/homebrew/opt/unixodbc/lib"
-# export KERL_CONFIGURE_OPTIONS="--with-odbc=/opt/homebrew/opt/unixodbc"
-
 # Java
 . ~/.asdf/plugins/java/set-java-home.zsh
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
+
+# Shell integrations
+eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"
+eval "$(tmuxifier init -)"
