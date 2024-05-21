@@ -18,6 +18,10 @@ if [[ -f "/opt/homebrew/bin/brew" ]] then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+if type brew &>/dev/null; then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
+
 # Set the directory to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -77,6 +81,12 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
+
+# Load CLI autocompletion.
+source <(ng completion script)
+source <(kubectl completion zsh)
 
 # Aliases
 alias ls='ls --color'
@@ -89,9 +99,6 @@ alias ta="tmux a"
 
 # Java
 . ~/.asdf/plugins/java/set-java-home.zsh
-
-# Load Angular CLI autocompletion.
-source <(ng completion script)
 
 # Shell integrations
 eval "$(fzf --zsh)"
