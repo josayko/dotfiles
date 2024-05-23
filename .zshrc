@@ -1,11 +1,15 @@
 # Environment
 export EDITOR=nvim
 export PATH="$HOME/.tmux/plugins/tmuxifier/bin:$PATH"
+
+## Dotnet
 export PATH="$HOME/.dotnet/tools:$PATH"
+. ~/.asdf/plugins/dotnet/set-dotnet-env.zsh
+
 export KERL_BUILD_DOCS=yes
+# export KERL_CONFIGURE_OPTIONS="--with-odbc=/opt/homebrew/opt/unixodbc"
 # export CPPFLAGS="${CPPFLAGS+"$CPPFLAGS "}-I/opt/homebrew/opt/unixodbc/include"
 # export LDFLAGS="${LDFLAGS+"$LDFLAGS "}-L/opt/homebrew/opt/unixodbc/lib"
-# export KERL_CONFIGURE_OPTIONS="--with-odbc=/opt/homebrew/opt/unixodbc"
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
