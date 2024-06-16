@@ -1,4 +1,4 @@
-# Dotconfigs
+# Dotfiles
 
 This directory contains the dotfiles for my system
 
@@ -31,4 +31,10 @@ then use GNU stow to create symlinks
 
 ```
 $ stow .
+```
+
+## Uninstallation
+Remove created symlinks
+```
+$ stow -D .
 ```
