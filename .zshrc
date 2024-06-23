@@ -92,6 +92,9 @@ alias k='kubectl'
 alias lg='lazygit'
 alias tls="tmux list-session"
 alias ta="tmux a"
+alias l="ls -lh"
+alias la="ls -lah"
+alias colima-clean="rm -rf .colima/_lima/_networks/user-v2"
 
 # Java
 . ~/.asdf/plugins/java/set-java-home.zsh
