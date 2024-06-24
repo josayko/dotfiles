@@ -85,16 +85,17 @@ source <(ng completion script)
 source <(kubectl completion zsh)
 
 # Aliases
-alias ls='ls --color'
-alias vim='nvim'
-alias c='clear'
-alias k='kubectl'
-alias lg='lazygit'
+alias ls="ls --color"
+alias vim="nvim"
+alias c="clear"
+alias k="kubectl"
+alias lg="lazygit"
 alias tls="tmux list-session"
 alias ta="tmux a"
 alias l="ls -lh"
 alias la="ls -lah"
 alias colima-clean="rm -rf .colima/_lima/_networks/user-v2"
+alias pn="pnpm"
 
 # Java
 . ~/.asdf/plugins/java/set-java-home.zsh
