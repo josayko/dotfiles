@@ -1,6 +1,7 @@
 # Environment
 export EDITOR=nvim
 export PATH="$HOME/.tmux/plugins/tmuxifier/bin:$PATH"
+export PATH=/home/jonny/.asdf/shims:/home/jonny/.asdf/bin:$PATH
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true # for docs-ng
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
@@ -53,6 +54,9 @@ zinit snippet OMZP::kubectx
 fpath=(~/.zsh/completion $fpath)
 autoload -U compinit && compinit
 zinit cdreplay -q
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Keybindings
 bindkey -e
