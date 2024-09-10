@@ -8,13 +8,15 @@ Ensure you have the following installed on your system
 
 ### Git
 
-```
+```bash
+# whith Homebrew
 brew install git
 ```
 
 ### Stow
 
-```
+```bash
+# with Homebrew
 brew install stow
 ```
 
@@ -23,8 +25,8 @@ brew install stow
 First, check out the dotfiles repo in your $HOME directory using git
 
 ```
-$ git clone git@github.com/josayko/Dotconfigs.git
-$ cd Dotconfigs
+$ git clone git@github.com/josayko/dotfiles.git
+$ cd dotfiles
 ```
 
 then use GNU stow to create symlinks
