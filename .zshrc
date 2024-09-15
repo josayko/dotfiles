@@ -95,7 +95,7 @@ alias tls="tmux list-session"
 alias ta="tmux a"
 alias l="ls -lh"
 alias la="ls -lah"
-alias colima-clean="rm -rf .colima/_lima/_networks/user-v2"
+alias colima-clean="rm -rf $HOME/.colima/_lima/_networks/user-v2"
 alias pn="pnpm"
 
 # Java
