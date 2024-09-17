@@ -49,6 +49,7 @@ zinit snippet OMZP::kubectl
 zinit snippet OMZP::kubectx
 
 # Load zsh-completions
+fpath=(~/.zsh/completion $fpath)
 autoload -U compinit && compinit
 zinit cdreplay -q
 
