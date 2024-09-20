@@ -1,0 +1,9 @@
+@angular/cli
+@vue/language-server
+@vue/typescript-plugin
+eslint_d
+neovim
+npm-check-updates
+pnpm
+typescript
+yarn
