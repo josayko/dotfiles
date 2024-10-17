@@ -3,6 +3,7 @@ export EDITOR=nvim
 export PATH="$HOME/.tmux/plugins/tmuxifier/bin:$PATH"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true # for docs-ng
+export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 
 ## Dotnet
 export PATH="$HOME/.dotnet/tools:$PATH"
